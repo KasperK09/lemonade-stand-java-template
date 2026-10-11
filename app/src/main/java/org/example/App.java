@@ -13,6 +13,11 @@ public class App {
         int pitchers = 0;
         int day = 1;
 
+        // Recipe for one pitcher
+        int lemonsPerPitcher = 0;
+        int sugarPerPitcher = 0;
+        int waterPerPitcher = 0;
+
         System.out.println("Welcome to My Lemonade Stand!");
 
         boolean playing = true;
@@ -35,15 +40,9 @@ public class App {
 
             System.out.print("What would you like to do? ");
 
-            // if (!scanner.hasNextInt()) {
-            //     System.out.println("Please enter a valid menu choice.");
-            //     break;
-            // }
-            
             int choice = scanner.nextInt();
 
             if (choice == 1) {
-                // Ask how many ingredients the player wants
                 System.out.println("Lemons are $1 each");
                 System.out.println("Sugar is $0.50 per cup");
 
@@ -53,21 +52,16 @@ public class App {
                 System.out.print("How many cups of sugar do you want to buy? ");
                 int sugarToBuy = scanner.nextInt();
 
-                // Check that the amounts are not negative
                 if (lemonsToBuy < 0 || sugarToBuy < 0) {
                     System.out.println("You cannot buy negative ingredients!");
                 } else {
-                    // Calculate the total price
                     double cost = lemonsToBuy + (sugarToBuy * 0.50);
 
                     if (cost > money) {
                         System.out.println("You do not have enough money!");
                     } else {
-                        // Add ingredients to inventory
                         lemons = lemons + lemonsToBuy;
                         sugar = sugar + sugarToBuy;
-
-                        // Subtract the cost from the money
                         money = money - cost;
 
                         System.out.println("Great! Transaction complete!");
@@ -75,7 +69,25 @@ public class App {
                 }
 
             } else if (choice == 2) {
-                System.out.println("Recipe settings go here.");
+                // Set the recipe for one pitcherr
+                System.out.print("How many lemons do you want per pitcher? ");
+                int newLemons = scanner.nextInt();
+
+                System.out.print("How many cups of sugar do you want per pitcher? ");
+                int newSugar = scanner.nextInt();
+
+                System.out.print("How many cups of water do you want per pitcher? ");
+                int newWater = scanner.nextInt();
+
+                if (newLemons < 0 || newSugar < 0 || newWater < 0) {
+                    System.out.println("Recipe amounts cannot be negative!");
+                } else {
+                    lemonsPerPitcher = newLemons;
+                    sugarPerPitcher = newSugar;
+                    waterPerPitcher = newWater;
+
+                    System.out.println("Great! Your recipe is set!");
+                }
 
             } else if (choice == 3) {
                 System.out.println("Price settings go here.");
