@@ -35,6 +35,11 @@ public class App {
 
             System.out.print("What would you like to do? ");
 
+            // if (!scanner.hasNextInt()) {
+            //     System.out.println("Please enter a valid menu choice.");
+            //     break;
+            // }
+            
             int choice = scanner.nextInt();
 
             if (choice == 1) {
