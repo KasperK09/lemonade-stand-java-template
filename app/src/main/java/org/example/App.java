@@ -11,13 +11,14 @@ public class App {
         Recipe recipe = new Recipe();
         IngredientShop shop = new IngredientShop();
         GameMenu menu = new GameMenu();
+        PriceManager priceManager = new PriceManager();
 
         boolean playing = true;
 
         System.out.println("Welcome to My Lemonade Stand!");
 
         while (playing) {
-            stand.displayStatus();
+            stand.displayStatus(priceManager.getPrice());
             menu.displayMenu();
 
             int choice = menu.getChoice(scanner);
@@ -27,27 +28,34 @@ public class App {
 
             } else if (choice == 2) {
                 System.out.print(
-                        "How many lemons per pitcher? ");
+                    "How many lemons do you want per pitcher? "
+                );
                 int lemons = scanner.nextInt();
 
                 System.out.print(
-                        "How many cups of sugar per pitcher? ");
+                    "How many cups of sugar do you want per pitcher? "
+                );
                 int sugar = scanner.nextInt();
 
                 System.out.print(
-                        "How many cups of water per pitcher? ");
+                    "How many cups of water do you want per pitcher? "
+                );
                 int water = scanner.nextInt();
 
                 recipe.setRecipe(lemons, sugar, water);
 
             } else if (choice == 3) {
-                System.out.println("Price settings go here.");
+                priceManager.setPrice(scanner);
 
             } else if (choice == 4) {
-                System.out.println("Making lemonade goes here.");
+                System.out.println(
+                    "Making lemonade goes here."
+                );
 
             } else if (choice == 5) {
-                System.out.println("Selling lemonade goes here.");
+                System.out.println(
+                    "Selling lemonade goes here."
+                );
                 stand.nextDay();
 
             } else if (choice == 6) {
