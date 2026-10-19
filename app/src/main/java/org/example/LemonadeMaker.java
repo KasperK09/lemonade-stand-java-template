@@ -5,10 +5,7 @@ import java.util.Scanner;
 
 public class LemonadeMaker {
 
-    public void makePitchers(
-            Scanner scanner,
-            LemonadeStand stand,
-            Recipe recipe) {
+    public void makePitchers(Scanner scanner, LemonadeStand stand, Recipe recipe) {
 
         System.out.print("How many pitchers of lemonade do you want to make? ");
 
