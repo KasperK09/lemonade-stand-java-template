@@ -62,7 +62,12 @@ public class LemonadeStand {
         day++;
     }
 
+    public void discardPitchers() {
+        pitchers = 0;
+    }
     
+
+
     public void displayStatus(double price) {
         System.out.println("\nDay " + day + ": Preparation Phase");
         System.out.println("Let's prepare for the day!");

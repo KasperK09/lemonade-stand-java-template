@@ -12,6 +12,8 @@ public class App {
         IngredientShop shop = new IngredientShop();
         GameMenu menu = new GameMenu();
         PriceManager priceManager = new PriceManager();
+        SellingPhase sellingPhase = new SellingPhase();
+        LemonadeMaker lemonadeMaker = new LemonadeMaker();
 
         boolean playing = true;
 
@@ -27,19 +29,13 @@ public class App {
                 shop.purchaseIngredients(scanner, stand);
 
             } else if (choice == 2) {
-                System.out.print(
-                    "How many lemons do you want per pitcher? "
-                );
+                System.out.print("How many lemons do you want per pitcher? ");
                 int lemons = scanner.nextInt();
 
-                System.out.print(
-                    "How many cups of sugar do you want per pitcher? "
-                );
+                System.out.print("How many cups of sugar do you want per pitcher? ");
                 int sugar = scanner.nextInt();
 
-                System.out.print(
-                    "How many cups of water do you want per pitcher? "
-                );
+                System.out.print("How many cups of water do you want per pitcher? ");
                 int water = scanner.nextInt();
 
                 recipe.setRecipe(lemons, sugar, water);
@@ -48,14 +44,10 @@ public class App {
                 priceManager.setPrice(scanner);
 
             } else if (choice == 4) {
-                System.out.println(
-                    "Making lemonade goes here."
-                );
+                lemonadeMaker.makePitchers(scanner, stand, recipe);
 
             } else if (choice == 5) {
-                System.out.println(
-                    "Selling lemonade goes here."
-                );
+                sellingPhase.sellLemonade(stand, priceManager);
                 stand.nextDay();
 
             } else if (choice == 6) {
