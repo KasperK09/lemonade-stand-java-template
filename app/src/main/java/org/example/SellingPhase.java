@@ -6,8 +6,7 @@ import java.util.Random;
 public class SellingPhase {
     private Random random = new Random();
 
-    public void sellLemonade(
-            LemonadeStand stand, PriceManager priceManager) {
+    public void sellLemonade(LemonadeStand stand, PriceManager priceManager) {
 
         System.out.println("\nDay " + stand.getDay() + ": Selling Phase");
         System.out.println("The customers are coming!");
