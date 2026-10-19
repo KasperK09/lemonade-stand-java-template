@@ -37,7 +37,7 @@ public class SellingPhase {
 
         stand.discardPitchers();
 
-        System.out.println("Let's get a good night sleep and try again tomorrow!");
+        System.out.println("Lets get a good night sleep and try again tomorrow!");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 }
