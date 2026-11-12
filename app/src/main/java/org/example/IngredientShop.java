@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class IngredientShop {
     public void purchaseIngredients(
-            Scanner scanner, LemonadeStand stand) {
+            Scanner scanner, LemonadeStand stand, PriceManager priceManager) {
 
-        System.out.println("Lemons are $1 each");
-        System.out.println("Sugar is $0.50 per cup");
+        System.out.printf("Lemons are $%.2f each%n", priceManager.getLemonPrice());
+        System.out.printf("Sugar is $%.2f per cup%n", priceManager.getSugarPrice());
 
         System.out.print("How many lemons do you want to buy? ");
         int lemonsToBuy = scanner.nextInt();
@@ -22,7 +22,7 @@ public class IngredientShop {
             return;
         }
 
-        double cost = lemonsToBuy + (sugarToBuy * 0.50);
+        double cost = (lemonsToBuy * priceManager.getLemonPrice()) + (sugarToBuy * priceManager.getSugarPrice());
 
         if (cost > stand.getMoney()) {
             System.out.println("You do not have enough money!");
@@ -30,7 +30,7 @@ public class IngredientShop {
             stand.addIngredients(lemonsToBuy, sugarToBuy);
             stand.spendMoney(cost);
 
-            System.out.println("Great! Transaction complete!");
+            System.out.printf("Great! Transaction complete! Totla cost: $%.2f%n", cost);
         }
     }
 }
