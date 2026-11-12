@@ -1,13 +1,21 @@
 
 package org.example;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class PriceManager {
     private double price;
+    private int lemonPrice;
+    private int sugarPrice;
+
+    private Random random = new Random();
 
     public PriceManager() {
         price = 0.00;
+
+        lemonPrice = 100;
+        sugarPrice = 50;
     }
 
     public void setPrice(Scanner scanner) {
@@ -37,5 +45,21 @@ public class PriceManager {
 
     public double getPrice() {
         return price;
+    }
+
+    public double getLemonPrice() {
+        return lemonPrice / 100.0;
+    }
+
+    public double getSugarPrice() {
+        return sugarPrice / 100.0;
+    }
+
+    public void updateDailyPrices() {
+        int oldLemonPrice = lemonPrice;
+        int oldSugarPrice = sugarPrice;
+
+        int minimumLemonPrice = (int) Math.ceil(lemonPrice * 0.95);
+        int maximumLemonPrice = (int) Math.floor(lemonPrice * 1.05);
     }
 }
