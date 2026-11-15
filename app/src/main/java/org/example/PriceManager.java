@@ -55,6 +55,7 @@ public class PriceManager {
         return sugarPrice / 100.0;
     }
 
+    
     public void updateDailyPrices() {
         int oldLemonPrice = lemonPrice;
         int oldSugarPrice = sugarPrice;
@@ -65,17 +66,40 @@ public class PriceManager {
         int minimumSugarPrice = (int) Math.ceil(sugarPrice * 0.95);
         int maximumSugarPrice = (int) Math.floor(sugarPrice * 1.05);
 
-        lemonPrice = random.nextInt(maximumLemonPrice - minimumLemonPrice + 1) + minimumLemonPrice;
-        sugarPrice = random.nextInt(maximumSugarPrice - minimumSugarPrice + 1) + minimumSugarPrice;
+        lemonPrice = random.nextInt(
+                maximumLemonPrice - minimumLemonPrice + 1) + minimumLemonPrice;
 
-        System.out.printf("Todays price of lemons is $%.2f per lemon. ", getLemonPrice());
-        
+        sugarPrice = random.nextInt(
+                maximumSugarPrice - minimumSugarPrice + 1) + minimumSugarPrice;
+
+        System.out.printf(
+                "\nToday's price of lemons is $%.2f per lemon. ",
+                getLemonPrice());
+
         if (lemonPrice > oldLemonPrice) {
-            System.out.printf("This price is up from yesterdays price of $%.2f.%n", oldSugarPrice / 100.0);
-        } else if (sugarPrice < oldSugarPrice) {
-            System.out.printf("This is down from yesterday's price of $%.2f.%n", oldSugarPrice / 100.0);
+            System.out.printf("This is up from yesterday's price of $%.2f.%n",
+                    oldLemonPrice / 100.0);
+        } else if (lemonPrice < oldLemonPrice) {
+            System.out.printf("This is down from yesterday's price of $%.2f.%n",
+                    oldLemonPrice / 100.0);
         } else {
-            System.out.printf("This is the same as yesterday's price of $%.2f.%n", oldSugarPrice / 100.0);
+            System.out.printf("This is the same as yesterday's price of $%.2f.%n",
+                    oldLemonPrice / 100.0);
+        }
+
+        System.out.printf(
+                "Today's price of sugar is $%.2f per cup. ",
+                getSugarPrice());
+
+        if (sugarPrice > oldSugarPrice) {
+            System.out.printf("This is up from yesterday's price of $%.2f.%n",
+                    oldSugarPrice / 100.0);
+        } else if (sugarPrice < oldSugarPrice) {
+            System.out.printf("This is down from yesterday's price of $%.2f.%n",
+                    oldSugarPrice / 100.0);
+        } else {
+            System.out.printf("This is the same as yesterday's price of $%.2f.%n",
+                    oldSugarPrice / 100.0);
         }
     }
 }

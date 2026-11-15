@@ -22,13 +22,15 @@ public class AppTest {
         assertEquals(1, stand.getDay());
     }
 
+ 
     @Test
     public void testPurchaseIngredients() {
         LemonadeStand stand = new LemonadeStand();
         IngredientShop shop = new IngredientShop();
+        PriceManager priceManager = new PriceManager();
 
         Scanner scanner = new Scanner("10\n4\n");
-        shop.purchaseIngredients(scanner, stand);
+        shop.purchaseIngredients(scanner, stand, priceManager);
 
         assertEquals(10, stand.getLemons());
         assertEquals(4, stand.getSugar());
@@ -41,9 +43,10 @@ public class AppTest {
     public void testPurchaseWithoutEnoughMoney() {
         LemonadeStand stand = new LemonadeStand();
         IngredientShop shop = new IngredientShop();
+        PriceManager priceManager = new PriceManager();
 
         Scanner scanner = new Scanner("101\n0\n");
-        shop.purchaseIngredients(scanner, stand);
+        shop.purchaseIngredients(scanner, stand, priceManager);
 
         assertEquals(100.00, stand.getMoney(), 0.001);
         assertEquals(0, stand.getLemons());
@@ -56,9 +59,10 @@ public class AppTest {
     public void testPurchaseNegativeIngredients() {
         LemonadeStand stand = new LemonadeStand();
         IngredientShop shop = new IngredientShop();
+        PriceManager priceManager = new PriceManager();
 
         Scanner scanner = new Scanner("-5\n2\n");
-        shop.purchaseIngredients(scanner, stand);
+        shop.purchaseIngredients(scanner, stand, priceManager);
 
         assertEquals(100.00, stand.getMoney(), 0.001);
         assertEquals(0, stand.getLemons());
@@ -66,6 +70,7 @@ public class AppTest {
 
         scanner.close();
     }
+
 
     @Test
     public void testSetRecipe() {
@@ -222,4 +227,55 @@ public class AppTest {
 
         scanner.close();
     }
+
+
+    @Test
+    public void testPayDailyRent() {
+        LemonadeStand stand = new LemonadeStand();
+
+        stand.payRent();
+
+        assertEquals(85.00, stand.getMoney(), 0.001);
+    }
+
+    @Test
+    public void testGameOverWhenMoneyGoesBelowZero() {
+        LemonadeStand stand = new LemonadeStand();
+
+        stand.spendMoney(110.00);
+
+        assertTrue(stand.isGameOver());
+    }
+
+    @Test
+    public void testGameDoesNotEndWhenMoneyIsZero() {
+        LemonadeStand stand = new LemonadeStand();
+
+        stand.spendMoney(100.00);
+
+        assertEquals(0.00, stand.getMoney(), 0.001);
+        assertFalse(stand.isGameOver());
+    }
+
+    @Test
+    public void testGameContinuesWhenPlayerHasMoney() {
+        LemonadeStand stand = new LemonadeStand();
+
+        stand.spendMoney(50.00);
+
+        assertEquals(50.00, stand.getMoney(), 0.001);
+        assertFalse(stand.isGameOver());
+    }
+
+    @Test
+    public void testGameOverAfterRentPayment() {
+        LemonadeStand stand = new LemonadeStand();
+
+        stand.spendMoney(90.00);
+        stand.payRent();
+
+        assertEquals(-5.00, stand.getMoney(), 0.001);
+        assertTrue(stand.isGameOver());
+    }
+
 }

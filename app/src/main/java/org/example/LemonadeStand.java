@@ -65,6 +65,15 @@ public class LemonadeStand {
     public void discardPitchers() {
         pitchers = 0;
     }
+
+    //for testing game
+    public void payRent() {
+    money -= 15.00;
+    }
+
+    public boolean isGameOver() {
+        return money < 0;
+    }
     
 
 

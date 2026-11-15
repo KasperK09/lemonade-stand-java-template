@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        PriceManager priceManager = new PriceManager();
 
         double money = 100.00;
         double rent = 15.00;
@@ -65,8 +66,8 @@ public class App {
             int choice = scanner.nextInt();
 
             if (choice == 1) {
-                System.out.println("Lemons are $1 each");
-                System.out.println("Sugar is $0.50 per cup");
+                System.out.printf("Lemons are $%.2f each%n", priceManager.getLemonPrice());
+                System.out.printf("Sugar is $%.2f per cup%n", priceManager.getSugarPrice());
 
                 System.out.print("How many lemons do you want to buy? ");
                 int lemonsToBuy = scanner.nextInt();
@@ -77,7 +78,7 @@ public class App {
                 if (lemonsToBuy < 0 || sugarToBuy < 0) {
                     System.out.println("You cannot buy negative ingredients!");
                 } else {
-                    double cost = lemonsToBuy + (sugarToBuy * 0.50);
+                    double cost = (lemonsToBuy * priceManager.getLemonPrice())+ (sugarToBuy * priceManager.getSugarPrice());
 
                     if (cost > money) {
                         System.out.println("You do not have enough money!");
@@ -122,6 +123,8 @@ public class App {
                 //Move to the next day
                 day++;
                 newDay = true;
+
+                priceManager.updateDailyPrices();
 
             } else if (choice == 6) {
                 playing = false;
