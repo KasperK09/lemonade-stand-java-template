@@ -15,7 +15,20 @@ public class SellingPhase {
 
         int availableCups = stand.getPitchers() * 8;
 
-        int cupsSold = Math.min(customers, availableCups);
+        int interestedCustomers = (int) Math.round(
+                customers * (1 - (priceManager.getPrice()
+                        / PriceManager.MAX_LEMONADE_PRICE)));
+
+        int cupsSold;
+
+        if (priceManager.getPrice() == 0) {
+            cupsSold = availableCups;
+        } else if (priceManager.getPrice() >= PriceManager.MAX_LEMONADE_PRICE) {
+            cupsSold = 0;
+            System.out.println("Your lemonade is too expensive! No customers wanted to buy it. Try making your price lower...");
+        } else {
+            cupsSold = Math.min(interestedCustomers, availableCups);
+        }
 
         double earnings = cupsSold * priceManager.getPrice();
         stand.addMoney(earnings);

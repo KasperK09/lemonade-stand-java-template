@@ -85,13 +85,11 @@
                     System.out.print("How many cups of water do you want per pitcher? ");
                     int newWater = scanner.nextInt();
 
-                    if (newLemons < 0 || newSugar < 0 || newWater < 0) {
-                        System.out.println("Recipe amounts cannot be negative!");
-                    } else {
-                        recipe.setRecipe(newLemons, newSugar, newWater);
+                    recipe.setRecipe(newLemons, newSugar, newWater);
 
-                        System.out.println("Great! Your recipe is set!");
-                    }
+                    // System.out.println("debug lemons  " + recipe.getLemonsPerPitcher());
+                    // System.out.println("debug sugar  " + recipe.getSugarPerPitcher());
+                    // System.out.println("debug water  " + recipe.getWaterPerPitcher());
 
                 } else if (choice == 3) {
                     priceManager.setPrice(scanner);

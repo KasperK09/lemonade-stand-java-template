@@ -7,9 +7,9 @@ public class Recipe {
     private int waterPerPitcher;
 
     public Recipe() {
-        lemonsPerPitcher = 0;
-        sugarPerPitcher = 0;
-        waterPerPitcher = 0;
+        lemonsPerPitcher = 3;
+        sugarPerPitcher = 2;
+        waterPerPitcher = 1;
     }
 
     public void setRecipe(int lemons, int sugar, int water) {

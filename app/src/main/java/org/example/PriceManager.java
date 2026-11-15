@@ -5,9 +5,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class PriceManager {
+    public static final double MAX_LEMONADE_PRICE = 10.00;
     private double price;
     private int lemonPrice;
-    private int sugarPrice;
+    private int sugarPrice; 
 
     private Random random = new Random();
 
