@@ -12,13 +12,7 @@
             LemonadeMaker lemonadeMaker = new LemonadeMaker();
             SellingPhase sellingPhase = new SellingPhase();
 
-            double money = 100.00;
             double rent = 15.00;
-
-            int lemons = 0;
-            int sugar = 0;
-            int pitchers = 0;
-            int day = 1;
 
             System.out.println("Welcome to My Lemonade Stand!");
 
